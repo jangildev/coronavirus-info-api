@@ -4,10 +4,58 @@ We provide data on the development of the COVID-19 virus in Poland. Using this A
 
 ### Basic operations
 
+To receive list of all provinces in Poland and their statistitics :
+
 ```
-`GET http://www.coronavirusinfo.cba.pl/api/state`
+http://www.coronavirusinfo.cba.pl/api/state
 ```
-`GET http://www.coronavirusinfo.cba.pl/api/state`
+
+Response :
+
+```javascript
+[
+    {
+        "id": "3",
+        "name": "Dolnośląskie",
+        "quarantine": "1125",
+        "overwatch": "0"
+    },
+    {
+        "id": "4",
+        "name": "Kujawsko-pomorskie",
+        "quarantine": "644",
+        "overwatch": "0"
+    },
+    ...
+]    
+```
+To get data about specific province :
+
+```
+http://www.coronavirusinfo.cba.pl/api/state/5
+```
+
+Response :
+
+```javascript
+{
+    "state": "Lubelskie",
+    "quarantine": "2603",
+    "overwatch": "0",
+    "cities": [
+        {
+            "id": "20",
+            "name": "Bełżyce"
+        },
+        {
+            "id": "21",
+            "name": "Lublin"
+        }
+    ]
+}		
+
+```
+
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
