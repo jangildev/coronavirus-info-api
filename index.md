@@ -55,14 +55,64 @@ Response :
 }		
 
 ```
+To receive list of all cities in Poland with coronavirus cases and their statistitics :
 
+```
+http://www.coronavirusinfo.cba.pl/api/city
+```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Response :
 
-### Jekyll Themes
+```javascript
+[
+    {
+        "id": "1",
+        "name": "Szczecin",
+        "state_id": "18"
+    },
+    {
+        "id": "2",
+        "name": "Gdańsk",
+        "state_id": "13"
+    },
+    ...
+]    
+```
+To get data about specific city :
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/jangildev/coronavirus-info-api/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+```
+http://www.coronavirusinfo.cba.pl/api/city/5
+```
 
-### Support or Contact
+Response :
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+```javascript
+{
+        "id": "5",
+        "name": "Warszawa",
+        "infected": "18",
+        "deaths": "0",
+        "recovered": "13"
+}	
+
+```
+
+To get general statistics :
+```
+http://www.coronavirusinfo.cba.pl/api/poland
+```
+Response : 
+
+```
+{
+    "infected": "108",
+    "deaths": "3",
+    "recovered": "13",
+    "quarantine": "17642",
+    "overwatch": "0"
+}		
+```
+Sample website using coronavirus-info-api http://www.coronavirus.cba.pl
+
+### TODO
+There will be some tocket authentication if necessery.
