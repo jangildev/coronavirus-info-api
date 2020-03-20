@@ -1,8 +1,6 @@
-## Welcome to GitHub Pages
+## Welcome to Coronavirus Info API
 
-You can use the [editor on GitHub](https://github.com/jangildev/coronavirus-info-api/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+We provide data on the development of the COVID-19 virus in Poland. Using this API is open and completely free for everyone. Data is refreshed daily and comes from official public information. All names and text information are returned in Polish with Polish diacretic characters.
 
 ### Markdown
 
