@@ -4,9 +4,10 @@ We provide data on the development of the COVID-19 virus in Poland. Using this A
 
 ### Basic operations
 
-
-'GET http://www.coronavirusinfo.cba.pl/api/state'
-
+```
+`GET http://www.coronavirusinfo.cba.pl/api/state`
+```
+`GET http://www.coronavirusinfo.cba.pl/api/state`
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
