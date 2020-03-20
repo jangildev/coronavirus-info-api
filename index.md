@@ -112,7 +112,7 @@ Response :
     "overwatch": "0"
 }		
 ```
-Sample website using coronavirus-info-api http://www.coronavirus.cba.pl
+Sample website using coronavirus-info-api http://www.coronavirusinfo.cba.pl
 
 ### TODO
 There will be some tocket authentication if necessery.
