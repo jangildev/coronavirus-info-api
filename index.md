@@ -2,6 +2,29 @@
 
 We provide data on the development of the COVID-19 virus in Poland. Using this API is open and completely free for everyone. Data is refreshed daily and comes from official public information. All names and text data are returned in Polish with Polish diacretic characters.
 
+### Token
+
+Coronavirus Info API uses API KEY Authorization which means that you have to add header with token to your request.
+```
+'Authorization: your_token'
+```
+
+You can get a token at <a href="http://coronavirusinfo.cba.pl/api/token">http://coronavirusinfo.cba.pl/api/token</a>. 
+
+Simple AJAX example :
+```javascript
+    $.ajax({
+        type: "GET",
+        url: "http://www.coronavirusinfo.cba.pl/api/poland",
+        headers : {
+            "Authorization":"your_token"
+        },
+        success: function (response) {
+           ...
+        }
+    });
+```
+
 ### Basic operations
 
 To receive list of all provinces in Poland and their statistitics :
@@ -113,6 +136,3 @@ Response :
 }		
 ```
 Sample website using coronavirus-info-api <a href="http://www.coronavirusinfo.cba.pl">http://www.coronavirusinfo.cba.pl</a>
-
-### TODO
-There will be some tocket authentication if necessery.
