@@ -1,4 +1,7 @@
 <?php
+
+    require_once(__DIR__."/token.php");
+
     class Database
     {
         private $host = "localhost";
@@ -85,6 +88,67 @@
 
             $result = array_merge($set1[0] , $set2[0]);
             return json_encode( $result , JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+        }
+
+        public function register($user)
+        {
+            $sql = "INSERT INTO users (login , password , token) VALUES (:login , :password , :token)";
+            $stmt = $this->conn->prepare($sql);
+            if(property_exists($user , 'login') && property_exists($user , 'password'))
+            {
+                $pwd = md5($user->password);
+                $token = new Token($user->login , $pwd ,  0);
+                $stoken = $token->GetToken();
+                $stmt->bindParam(":login" , $user->login);
+                $stmt->bindParam(":password" , $pwd);
+                $stmt->bindParam(":token" , $stoken);
+                $stmt->execute();
+                return json_encode(array("Message"=>"1" , "Token"=>$stoken));
+            }
+            return json_encode(array("Message"=>"0") , JSON_PRETTY_PRINT);
+        }
+
+        public function tokenExists($token)
+        {
+            $sql = "SELECT COUNT(*) as 'count' FROM users where token = :token";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":token" , $token);
+            $stmt->execute();
+
+            return $stmt->fetch()["count"] != 0;
+        }
+
+        public function loginExists($login)
+        {
+            $sql = "SELECT COUNT(*) as 'count' FROM users where login = :login";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(":login" , $login);
+            $stmt->execute();
+
+            return $stmt->fetch()["count"] != 0;
+        }
+
+        public function login($user)
+        {
+            $sql = "SELECT COUNT(*) as 'count', users.token as 'token' FROM users WHERE login = :login and password = :password";
+            $stmt = $this->conn->prepare($sql);
+            if(property_exists($user , "login") && property_exists($user , "password"))
+            {
+                $pwd = md5($user->password);
+                $stmt->bindParam(":login" , $user->login);
+                $stmt->bindParam(":password" , $pwd);
+                $stmt->execute();
+                $result = $stmt->fetch();
+
+                if($result["count"] == 0)
+                {
+                    return json_encode(array("Message" => "0") , JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+                }
+
+                return json_encode(array("Message" => "1" , "Token" => $result["token"]) , JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+            }
+
+            return json_encode(array("Message" => "0") , JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
         }
         
     }
