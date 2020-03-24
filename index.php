@@ -21,7 +21,7 @@
         exit;
     }
 
-    // SOM TOKEN AUTHORIZATION 
+    // SOME TOKEN AUTHORIZATION 
 
     $token = //get token;
 
