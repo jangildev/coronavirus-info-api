@@ -25,14 +25,14 @@
 
         public function citys()
         {
-            $sql = "SELECT * FROM cities";
+            $sql = "SELECT id , name FROM cities";
             $stmt = $this->conn->query($sql);
             return json_encode($stmt->fetchAll(PDO::FETCH_ASSOC) , JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
         }
 
         public function city($city)
         {
-            $sql = "select cities.id , cities.name , statistics.infected , statistics.deaths , statistics.recovered   from cities join statistics on cities.id = statistics.city_id  where cities.id = :city";
+            $sql = "select cities.id , cities.name , cities.infected , cities.deaths , cities.recovered   from cities where cities.id = :city";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(":city" , $city);
             $stmt->execute();
@@ -71,14 +71,14 @@
         
         public function stats()
         {
-            $sql = "select cities.id , cities.name , statistics.infected , statistics.deaths , statistics.recovered from statistics join cities on cities.id = statistics.city_id";
+            $sql = "select cities.id , cities.name , cities.infected , cities.deaths , cities.recovered from cities";
             $stmt = $this->conn->query($sql);
             return json_encode($stmt->fetchAll(PDO::FETCH_ASSOC) , JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
         }
     
         public function poland()
         {
-            $sql = "select SUM(statistics.infected ) as 'infected', SUM(statistics.deaths) as 'deaths' , SUM(statistics.recovered) as 'recovered' from statistics";
+            $sql = "select SUM(cities.infected ) as 'infected', SUM(cities.deaths) as 'deaths' , SUM(cities.recovered) as 'recovered' from cities";
             $stmt = $this->conn->query($sql);
             $set1 = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -89,6 +89,7 @@
             $result = array_merge($set1[0] , $set2[0]);
             return json_encode( $result , JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
         }
+
 
         public function register($user)
         {
