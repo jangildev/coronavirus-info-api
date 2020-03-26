@@ -38,6 +38,12 @@
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+            if(count($result) == 0)
+            {
+                http_response_code(404);
+                return json_encode(array("Message"=>"404 not found") , JSON_PRETTY_PRINT);
+            }
+
             return json_encode($result[0] , JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
         }
 
@@ -56,6 +62,12 @@
             $stmt->execute();
 
             $cities = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            if(count($cities) == 0)
+            {
+                http_response_code(404);
+                return json_encode(array("Message"=>"404 not found") , JSON_PRETTY_PRINT);
+            }
 
             $sql = "select states.quarantine  , states.name , states.overwatch from states where states.id = :state";
             $stmt = $this->conn->prepare($sql);
@@ -106,6 +118,7 @@
                 $stmt->execute();
                 return json_encode(array("Message"=>"1" , "Token"=>$stoken));
             }
+            http_response_code(422);
             return json_encode(array("Message"=>"0") , JSON_PRETTY_PRINT);
         }
 
@@ -143,12 +156,13 @@
 
                 if($result["count"] == 0)
                 {
+                    http_response_code(404);
                     return json_encode(array("Message" => "0") , JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
                 }
 
                 return json_encode(array("Message" => "1" , "Token" => $result["token"]) , JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
             }
-
+            http_response_code(422);
             return json_encode(array("Message" => "0") , JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
         }
         

@@ -73,6 +73,7 @@
     }
     catch(Error $e)
     {
+        http_response_code(400);
         echo json_encode(array("Message"=>"Bad request") , JSON_PRETTY_PRINT);
     }
 ?>		
