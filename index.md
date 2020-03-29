@@ -40,14 +40,14 @@ Response :
     {
         "id": "3",
         "name": "Dolnośląskie",
-        "quarantine": "4114",
-        "overwatch": "2949"
+        "quarantine": "1125",
+        "overwatch": "0"
     },
     {
         "id": "4",
         "name": "Kujawsko-pomorskie",
-        "quarantine": "5501",
-        "overwatch": "1763"
+        "quarantine": "644",
+        "overwatch": "0"
     },
     ...
 ]    
@@ -63,8 +63,8 @@ Response :
 ```javascript
 {
     "state": "Lubelskie",
-    "quarantine": "5019",
-    "overwatch": "5656",
+    "quarantine": "2603",
+    "overwatch": "0",
     "cities": [
         {
             "id": "20",
@@ -113,8 +113,8 @@ Response :
 {
         "id": "5",
         "name": "Warszawa",
-        "infected": "251",
-        "deaths": "1",
+        "infected": "18",
+        "deaths": "0",
         "recovered": "13"
 }	
 
@@ -128,11 +128,11 @@ Response :
 
 ```
 {
-    "infected": "1052",
-    "deaths": "14",
+    "infected": "108",
+    "deaths": "3",
     "recovered": "13",
-    "quarantine": "54174",
-    "overwatch": "53044"
+    "quarantine": "17642",
+    "overwatch": "0"
 }		
 ```
 Sample website using coronavirus-info-api <a href="http://www.coronavirusinfo.cba.pl">http://www.coronavirusinfo.cba.pl</a>
