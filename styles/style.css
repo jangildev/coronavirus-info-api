@@ -1,0 +1,309 @@
+*
+{
+    margin : 0;
+    font-family: Anton, sans-serif;
+}
+
+body
+{
+    background-image: url("../images/back.jpg"), linear-gradient(rgba(0, 0, 0, 0.9),rgba(0,0,0,0.9));
+    background-blend-mode: overlay;
+}
+
+.cbalink
+{
+    display: none;
+}
+
+.state
+{
+    pointer-events: none;
+    left: 50px;
+    top : 200;
+    position: absolute;
+    visibility:hidden;
+}
+
+.tstate
+{
+    left: 50px;
+    top : 200;
+    position: absolute;
+}
+
+#tzp
+{
+    top : 303.5px;
+    left : 60.5px;
+}
+
+#tzp:hover ~ #zp
+{
+   visibility:visible;
+}
+
+#tpom
+{
+    top : 276px;
+    left : 220px;
+}
+
+#tpom:hover ~ #pom
+{
+   visibility:visible;
+}
+
+
+#twm
+{
+    top : 319px;
+    left : 366px;
+}
+
+#twm:hover ~ #wm
+{
+   visibility:visible;
+}
+
+#tpodl
+{
+    top : 318px;
+    left : 517px;
+}
+
+#tpodl:hover ~ #podl
+{
+   visibility:visible;
+}
+
+#tlubuskie
+{
+    top : 444.3px;
+    left : 81.2px;
+}
+
+#tlubuskie:hover ~ #lubuskie
+{
+   visibility:visible;
+}
+
+#twiel
+{
+    top : 396px;
+    left : 160px;
+}
+
+#twiel:hover ~ #wiel
+{
+   visibility:visible;
+}
+
+#tkp
+{
+    top : 384px;
+    left : 250px;
+}
+
+#tkp:hover ~ #kp
+{
+   visibility:visible;
+}
+
+#tmaz
+{
+    top : 415px;
+    left : 375px;
+}
+
+#tmaz:hover ~ #maz
+{
+   visibility:visible;
+}
+
+#tlod
+{
+    top : 529.5px;
+    left : 299px;
+}
+
+#tlod:hover ~ #lod
+{
+   visibility:visible;
+}
+
+#tds
+{
+    top : 581px;
+    left : 99px;
+}
+
+#tds:hover ~ #ds
+{
+   visibility:visible;
+}
+
+
+#top
+{
+    top : 650px;
+    left : 227px;
+}
+
+#top:hover ~ #op
+{
+   visibility:visible;
+}
+
+#tsl
+{
+    top : 659.5px;
+    left : 293px;
+}
+
+#tsl:hover ~ #sl
+{
+   visibility:visible;
+}
+
+#tsw
+{
+    top : 637px;
+    left : 403px;
+}
+
+#tsw:hover ~ #sw
+{
+   visibility:visible;
+}
+
+#tmal
+{
+    top : 722px;
+    left : 366px;
+}
+
+#tmal:hover ~ #mal
+{
+   visibility:visible;
+}
+
+#tlubelskie
+{
+    top : 535px;
+    left : 527px;
+}
+
+#tlubelskie:hover ~ #lubelskie
+{
+   visibility:visible;
+}
+
+#tpodk
+{
+    top : 688px;
+    left : 498px;
+}
+
+#tpodk:hover ~ #podk
+{
+   visibility:visible;
+}
+
+
+#map_content
+{
+    height: 650px;
+    padding-top : 60px;
+    margin-left: 50px;
+}
+
+.title h1  {
+    font-size: 60px;
+    font-weight: bold;
+	text-align: center;
+	-webkit-transition: text-shadow 1s ease;
+	text-shadow: 0 0 1px rgba(0,0,0,.5);
+	margin: 0;
+	padding: 0;
+}
+
+
+.title h3  {
+    font-weight: bold;
+	text-align: center;
+	-webkit-transition: text-shadow 1s ease;
+	text-shadow: 0 0 1px rgba(0,0,0,.5);
+	margin: 0;
+	padding: 0;
+}
+
+.title  {
+	background: url(../images/virus.jpg) no-repeat center center;
+	background-size: cover;
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+}
+
+#nav    
+{
+    width: 100%;
+    height: 150px;
+    padding-top:50px;
+    padding-bottom: 10px;
+    background-color: #141414;
+    color : #5f3c3c;
+}
+
+
+#footer
+{
+    bottom: 0;
+    clear: both;
+    background-color: #141414;
+    padding: 20px;
+    color : #5a1717;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#info
+{
+    float: right;
+    height: calc(100% - 50px);
+    background-color: #00000034;
+    padding-left : 10px;
+    padding-top : 10px;
+    margin-left: 50px;
+}
+
+#info h1{
+    text-align: center;
+    font-size: 50px;
+    color : #5a1717;
+}
+
+#info h3
+{
+    color : #ffffff33;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#info h2
+{
+    color : #5a1717;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#info b
+{
+    color :#5a1717;
+}
+
+#city
+{
+    display: inline-block;
+    padding-right : 20px;
+}

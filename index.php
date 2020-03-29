@@ -1,79 +1,65 @@
-<?php
-    require_once(__DIR__."/database/database.php");
 
-    //error_reporting(0);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coronavirus polska</title>
+    <link rel="stylesheet" type="text/css" href="./styles/style.css"/>
+    <link rel='icon' href='./images/virus.ico' type='image/x-icon' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="nav">
+        <center>
+            <div class="title">
+                <h1>C☢RONAVIRUS POLSKA</h1>
+                <h3>Stan koronawirusa w Polsce</h3>
+            </div>
+        </center>
+    </div>
+    <div id="map_content">
+        <img id="map" src="./images/poland.png" height="600px">
+        <img class="tstate" id="twiel" src="./images/twiel.png" height="258px" alt="17">
+        <img class="tstate" id="tzp" src="./images/tzp.png" height="184px" alt="18">
+        <img class="tstate" id="tpom" src="./images/tpom.png" height="131px" alt="13">
+        <img class="tstate" id="twm" src="./images/twm.png" height="129px" alt="16">
+        <img class="tstate" id="tmaz" src="./images/tmaz.png" height="250px" alt="9">
+        <img class="tstate" id="tpodl" src="./images/tpodl.png" height="208.5px" alt="12">
+        <img class="tstate" id="tlubuskie" src="./images/tlubuskie.png" height="173px" alt="6">
+        <img class="tstate" id="tkp" src="./images/tkp.png" height="145px" alt="4">
+        <img class="tstate" id="tlod" src="./images/tlod.png" height="153px" alt="7">
+        <img class="tstate" id="tds" src="./images/tds.png" height="173px" alt="3">
+        <img class="tstate" id="top" src="./images/top.png" height="117px" alt="10">
+        <img class="tstate" id="tsl" src="./images/tsl.png" height="171px" alt="14">
+        <img class="tstate" id="tsw" src="./images/tsw.png" height="114px" alt="15">
+        <img class="tstate" id="tmal" src="./images/tmal.png" height="127px" alt="8">
+        <img class="tstate" id="tlubelskie" src="./images/tlubelskie.png" height="201px" alt="5">
+        <img class="tstate" id="tpodk" src="./images/tpodk.png" height="174px" alt="11">
 
-    header('Access-Control-Allow-Origin: *');
-    header("Content-type: application/json; charset=utf-8");
-    header('Access-Control-Allow-Methods: POST, GET');
-    header('Access-Control-Allow-Headers: *');
+        <img class="state" id="maz" src="./images/maz.png" height="600px">
+        <img class="state" id="zp" src="./images/zp.png" height="600px">
+        <img class="state" id="pom" src="./images/pom.png" height="600px">
+        <img class="state" id="wm" src="./images/wm.png" height="600px">
+        <img class="state" id="podl" src="./images/podl.png" height="600px">
+        <img class="state" id="kp" src="./images/kp.png" height="600px">
+        <img class="state" id="wiel" src="./images/wiel.png" height="600px">
+        <img class="state" id="lubuskie" src="./images/lubuskie.png" height="600px">
+        <img class="state" id="sw" src="./images/sw.png" height="600px">
+        <img class="state" id="lod" src="./images/lod.png" height="600px">
+        <img class="state" id="ds" src="./images/ds.png" height="600px">
+        <img class="state" id="sl" src="./images/sl.png" height="600px">
+        <img class="state" id="op" src="./images/op.png" height="600px">
+        <img class="state" id="mal" src="./images/mal.png" height="600px">
+        <img class="state" id="podk" src="./images/podk.png" height="600px">
+        <img class="state" id="lubelskie" src="./images/lubelskie.png" height="600px">
 
-    $db = new Database();
+        <div id="info"></div>
 
-    $path = $_SERVER['REQUEST_URI'];
-    $requests = explode("/" , $path);
-    array_splice($requests , 0, array_search('api' , $requests) + 1);
-
-    if($requests[0] == "token")
-    {
-        header("Content-type: text/html;");
-        include "./gettoken.php";
-        exit;
-    }
-
-    // SOME TOKEN AUTHORIZATION 
-
-    $token = //get token;
-
-    $post = file_get_contents("php://input");
-    
-    $ispost = $_SERVER['REQUEST_METHOD'] == "POST" && !is_null($post) && $post != "";
-
-    try
-    {
-        if($requests[0] == "tokenExists" || $requests[0] == "loginExists")
-        {
-            echo json_encode(array("Message"=>"Bad request") , JSON_PRETTY_PRINT);
-            exit;
-        }
-
-        if(!$ispost)
-        {   
-            if(isset($requests[1]))
-            {
-                echo $db->{$requests[0]}($requests[1]);
-            }
-            else 
-            {
-                if($requests[0] == "state" || $requests[0] == "city")
-                {
-                    echo $db->{$requests[0]."s"}();
-                }
-                else
-                {
-                    echo $db->{$requests[0]}(); 
-                }
-            }
-        }
-        else
-        {
-            if($token->post == 1)
-            {
-                $post_data = json_decode($post);
-
-                if(isset($requests[0]))
-                {
-                    echo $db->{$requests[0]}($post_data);
-                }
-            }
-            else{
-                echo json_encode(array("Message"=>"Method Not Allowed") , JSON_PRETTY_PRINT);
-            }
-        }
-    }
-    catch(Error $e)
-    {
-        http_response_code(400);
-        echo json_encode(array("Message"=>"Bad request") , JSON_PRETTY_PRINT);
-    }
-?>		
+    </div>
+    <div id="footer">
+        &copy;Jan Gil 2020 
+</div>
+    <script src="./scripts/database.js"></script>
+</body>
+</html>
